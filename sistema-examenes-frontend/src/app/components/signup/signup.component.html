@@ -1,0 +1,133 @@
+<div class="container ">
+  <div class="grid">
+    <div class="col">
+      <div class="flex align-items-center justify-content-center ">
+        <i class="pi pi-user-plus" style="font-size: 6rem"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col text-3xl text-center">Registrate</div>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div
+        class="flex align-items-center justify-content-center"
+        style="height: 100%"
+        
+      >
+        <form [formGroup]="userForm" class="p-fluid p-mx-auto ">
+          <div class="field p-mb-2">
+            <label for="username" class="block">Nombre de usuario</label>
+            <input
+              type="text"
+              pInputText
+              placeholder="Ingrese Nombre de Usuario"
+              formControlName="username"
+            />
+            <small
+              class="p-error block"
+              *ngIf="
+                userForm.get('nombre')?.invalid && userForm.get('nombre')?.dirty
+              "
+              >Es necesario el username</small
+            >
+          </div>
+          <div class="field p-mb-2">
+            <label for="password" class="block">Password</label>
+            <input
+              type="password"
+              pInputText
+              placeholder="Ingrese su Password"
+              formControlName="password"
+            />
+            <small
+              class="p-error block"
+              *ngIf="
+                userForm.get('password')?.invalid &&
+                userForm.get('password')?.dirty
+              "
+              >Es necesario el password</small
+            >
+          </div>
+          <div class="field p-mb-2">
+            <label for="nombre" class="block">Nombre</label>
+            <input
+              type="text"
+              pInputText
+              placeholder="Ingrese Nombre"
+              formControlName="nombre"
+            />
+            <small
+              class="p-error block"
+              *ngIf="
+                userForm.get('nombre')?.invalid && userForm.get('nombre')?.dirty
+              "
+              >Es necesario el nombre</small
+            >
+          </div>
+          <div class="field p-mb-2">
+            <label for="apellido" class="block">Apellido</label>
+            <input
+              type="text"
+              pInputText
+              placeholder="Ingrese Nombre"
+              formControlName="apellido"
+            />
+            <small
+              class="p-error block"
+              *ngIf="
+                userForm.get('apellido')?.invalid && userForm.get('apellido')?.dirty
+              "
+              >Es necesario el apellido</small
+            >
+          </div>
+          <div class="field p-mb-2">
+            <label for="email" class="block">Email</label>
+            <input
+              type="email"
+              pInputText
+              placeholder="Ingrese Email"
+              formControlName="email"
+            />
+            <small
+              class="p-error block"
+              *ngIf="
+                userForm.get('email')?.invalid && userForm.get('email')?.dirty
+              "
+              >Es necesario el email</small
+            >
+          </div>
+          <div class="field p-mb-2">
+            <label for="telefono" class="block">Telefono</label>
+            <input
+              type="number"
+              pInputText
+              placeholder="Ingrese telefono"
+              formControlName="telefono"
+            />
+            <small
+              class="p-error block"
+              *ngIf="
+                userForm.get('telefono')?.invalid && userForm.get('telefono')?.dirty
+              "
+              >Es necesario el telefono</small
+            >
+          </div>
+
+          <div class="grid jalign-items-center justify-content-center">
+            <div class="field col">
+                <p-toast></p-toast>
+              <p-button label="Registrarse" (click)="registrarUsuario()" styleClass="p-button-sucess" [disabled]="!userForm.valid"></p-button>
+            </div>
+            <div class="field col">
+              <p-button type="reset" label="Limpiar" styleClass="p-button-danger"></p-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

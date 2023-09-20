@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Puedes ajustar este valor según tus necesidades */
+    background-color: #fff; /* Cambia el color de fondo según tus preferencias */
+    /* Agrega más estilos según sea necesario */
+}
+
+
+/* Boton fijo */
+.content {
+    position: relative;
+    /* Otros estilos para tu contenido principal */
+  }
+  
+  #boton-fijo {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    right: 20px; /* Ajusta la distancia desde la derecha */
+    z-index: 1000; /* Asegura que el botón esté en la parte superior */
+  }
+
+  
+  

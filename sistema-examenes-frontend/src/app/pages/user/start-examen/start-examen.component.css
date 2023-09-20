@@ -1,0 +1,45 @@
+.radio {
+  width: 15px;
+  height: 15px;
+}
+
+/* Establece el ancho máximo de la tarjeta y centra el contenido verticalmente */
+/* Estilo personalizado para centrar la tarjeta */
+.custom-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Estilo para que la tarjeta ocupe todo el ancho disponible */
+  .custom-card-width {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 400px; /* Ajusta el ancho máximo según tus preferencias */
+  }
+  
+.paginador-abajo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.juan{
+    margin-top: 250px;
+}
+
+.temporizador{
+    position: absolute;
+    right: 1rem;
+    margin-top: 1rem;
+    width: 250px;
+    height: 220px;
+    
+}
+
+
+

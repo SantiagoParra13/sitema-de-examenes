@@ -1,0 +1,92 @@
+<p-card header="Agregar Nuevo Examen">
+    <form [formGroup]="examenForm" class="p-fluid p-mx-auto">
+        <div class="field p-mb-2">
+          <label for="titulo" class="block">Titulo</label>
+          <input
+            type="text"
+            pInputText
+            required
+            placeholder="Ingrese El Titulo De la categoria"
+            formControlName="titulo"
+          />
+          <small
+            class="p-error block"
+            *ngIf="
+            examenForm.get('titulo')?.invalid &&
+            examenForm.get('titulo')?.dirty
+            "
+            >Es necesario el titulo</small
+          >
+        </div>
+        <div class="field p-mb-2">
+          <label for="descripcion" class="block">Descripcion</label>
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            placeholder="Ingrese una Descripcion de la Categoria"
+            required
+            formControlName="descripcion"
+          ></textarea>
+          <small
+            class="p-error block"
+            *ngIf="
+            examenForm.get('descripcion')?.invalid &&
+            examenForm.get('descripcion')?.dirty
+            "
+            >Es necesario la Descripcion</small
+          >
+        </div>
+
+        <div class="formgrid grid">
+
+        <div class="field col">
+            <label for="puntosMaximos" class="block">Puntos Maximos</label>
+            <p-inputNumber inputId="integeronly" placeholder="Ingrese la Cantidad de Puntos Maximos" formControlName="puntosMaximos"></p-inputNumber>
+            <small
+              class="p-error block"
+              *ngIf="
+              examenForm.get('puntosMaximos')?.invalid &&
+              examenForm.get('puntosMaximos')?.dirty
+              "
+              >Es necesario ingresar la Cantidad de puntos maximos</small
+            >
+          </div>
+
+          <div class="field col">
+            <label for="numeroDePreguntas" class="block">Numero de Preguntas</label>
+            <p-inputNumber inputId="integeronly" placeholder="Ingrese la Cantidad de numero de Preguntas" formControlName="numeroDePreguntas"></p-inputNumber>
+
+            <small
+              class="p-error block"
+              *ngIf="
+              examenForm.get('numeroDePreguntas')?.invalid &&
+              examenForm.get('numeroDePreguntas')?.dirty
+              "
+              >Es necesario ingresar el numero de preguntas</small
+            >
+          </div>
+        </div>
+          
+
+        <div class="formgrid grid">
+        
+            <div class="field col-3">
+                <label>Estado De Publicacion</label><br>
+                <p-inputSwitch formControlName="activo" ></p-inputSwitch>
+              </div>
+
+        <div class="field col-9">
+        <p-dropdown formControlName="categoria"  [options]="categorias"  optionLabel="titulo"></p-dropdown>
+    </div>
+    </div>
+    <div class="text-center">
+    <p-button label="Agregar" (click)="guardarCuestionario()"styleClass="p-button-success w-1"></p-button>
+    <p-toast></p-toast>
+    </div>
+      </form>
+</p-card>
+
+
+
+

@@ -1,0 +1,54 @@
+<div class="container">
+    <p-card header="Añadiendo Pregunta a {{titulo}}">
+      <form [formGroup]="preguntaForm" class="p-fluid p-mx-auto">
+        <div class="field p-mb-2">
+          <strong>Digite Los detalles de la Nueva pregunta</strong>
+        </div>
+        <div class="field p-mb-2">
+          <label for="contenido" class="block">Enunciado de la Pregunta</label>
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            placeholder="Digite el enunciado de la Pregunta"
+            required
+            formControlName="contenido"></textarea>
+          <small
+            class="p-error block"
+            *ngIf="
+              preguntaForm.get('descripcion')?.invalid &&
+              preguntaForm.get('descripcion')?.dirty
+            ">Es necesario la Descripcion</small>
+        </div>
+        <div class="grid">
+          <div class="field col-6">
+            <label for="opcion1">Digite La Opcion 1</label>
+            <input formControlName="opcion1"  type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          </div>
+          <div class="field col-6">
+            <label for="opcion2">Digite La Opcion 2</label>
+            <input formControlName="opcion2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          </div>
+          <div class="field col-6">
+            <label for="opcion3">Digite La Opcion 3</label>
+            <input formControlName="opcion3" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          </div>
+          <div class="field col-6">
+            <label for="opcion4">Digite La Opcion 4</label>
+            <input formControlName="opcion4" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          </div>
+        </div>
+        <p>Elige la respuesta correcta</p>
+        <div class="field col-9">
+          <p-dropdown [options]="opcionesRespuesta" formControlName="respuesta"></p-dropdown>
+          </div>
+          
+        <div class="grid jalign-items-center justify-content-center">
+            <p-button label="Guardar"  (click)="guardarPregunta()" styleClass="p-button-raised "></p-button>
+            <p-toast></p-toast>
+          </div>
+      </form>
+    </p-card>
+  </div>
+
+  

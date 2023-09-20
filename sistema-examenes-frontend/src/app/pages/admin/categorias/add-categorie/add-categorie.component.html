@@ -1,0 +1,51 @@
+<p-card class="p-6 content" header="Agregar Categoria">
+  <form [formGroup]="categoriaForm" class="p-fluid p-mx-auto">
+    <div class="field p-mb-2">
+      <label for="titulo" class="block">Titulo</label>
+      <input
+        type="text"
+        pInputText
+        required
+        placeholder="Ingrese El Nombre De la categoria"
+        formControlName="titulo"
+      />
+      <small
+        class="p-error block"
+        *ngIf="
+          categoriaForm.get('titulo')?.invalid &&
+          categoriaForm.get('titulo')?.dirty
+        "
+        >Es necesario el titulo</small
+      >
+    </div>
+    <div class="field p-mb-2">
+      <label for="descripcion" class="block">Descripcion</label>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        placeholder="Ingrese una Descripcion de la Categoria"
+        required
+        formControlName="descripcion"
+      ></textarea>
+      <small
+        class="p-error block"
+        *ngIf="
+          categoriaForm.get('descripcion')?.invalid &&
+          categoriaForm.get('descripcion')?.dirty
+        "
+        >Es necesario la Descripcion</small
+      >
+    </div>
+
+    <div class="grid jalign-items-center justify-content-center">
+      <p-button
+        label="Guardar"
+        [disabled]="!categoriaForm.valid"
+        (click)="guardarCategoria()"
+        styleClass="p-button-success p-button-raised"
+      ></p-button>
+      <p-toast></p-toast>
+    </div>
+  </form>
+</p-card>

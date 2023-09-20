@@ -1,0 +1,15 @@
+<p-card header="Todas Las Categorias">
+  
+<div *ngFor="let categoria of categorias">
+    <p-fieldset  legend="{{categoria.titulo}}" >
+        <p class="m-0">
+            {{categoria.descripcion}}
+        </p>
+    </p-fieldset>
+    <p-divider></p-divider>
+</div>
+<div class="container mt-5 mt-2 text-center">
+    <p-button label="Agregar Categoria" routerLink="/admin/add-categorie"  icon="pi pi-plus" styleClass="p-button-success p-button-sm p-button-border-round-xs"></p-button>
+</div>
+
+</p-card>

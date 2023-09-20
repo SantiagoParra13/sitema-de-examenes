@@ -1,0 +1,142 @@
+<div class="container text-center" *ngIf="!esEnviado">
+  <div class="grid">
+    <div class="col-2">
+      <h3>Instrucciones</h3>
+      <ul>
+        <li>
+          No actualice la página, de lo contrario obtendrá nuevas preguntas en
+          este cuestionario
+        </li>
+        <li>No cambies las pestañas</li>
+        <li>No minimices la ventana</li>
+      </ul>
+    </div>
+    <div class="col-8">
+      <div *ngIf="preguntas">
+        <ng-template>
+          <h1>
+            En Curso <b>{{ preguntas[0].examen.titulo }}</b>
+          </h1>
+        </ng-template>
+      </div>
+      <!-- Página actual de preguntas -->
+      <div *ngFor="let pregunta of preguntasPorPagina; let i = index">
+        <div class="text-center juan">
+          <p-card class="custom-card-width">
+            <ng-template class="mt-10" pTemplate="header">
+              <h4>
+                <p>
+                  <b>{{ i + first + 1 }}) </b>
+                  <span [innerHTML]="pregunta.contenido"></span>
+                </p>
+              </h4>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="col-6">
+                  <input
+                    [(ngModel)]="pregunta.respuestaDada"
+                    class="radio"
+                    type="radio"
+                    [name]="i + ''"
+                    [value]="pregunta.opcion1"
+                  />{{ pregunta.opcion1 }}
+                </div>
+                <div class="col-6">
+                  <input
+                    [(ngModel)]="pregunta.respuestaDada"
+                    class="radio"
+                    type="radio"
+                    [name]="i + ''"
+                    [value]="pregunta.opcion2"
+                  />{{ pregunta.opcion2 }}
+                </div>
+              </div>
+              <div class="grid">
+                <div class="col-6">
+                  <input
+                    [(ngModel)]="pregunta.respuestaDada"
+                    class="radio"
+                    type="radio"
+                    [name]="i + ''"
+                    [value]="pregunta.opcion3"
+                  />{{ pregunta.opcion3 }}
+                </div>
+                <div class="col-6">
+                  <input
+                    [(ngModel)]="pregunta.respuestaDada"
+                    class="radio"
+                    type="radio"
+                    [name]="i + ''"
+                    [value]="pregunta.opcion4"
+                  />{{ pregunta.opcion4 }}
+                </div>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+      </div>
+      <div
+        class="card flex justify-content-center m-5 p-paginator-bottom"
+        *ngIf="isLastPage()"
+      >
+        <button
+          pButton
+          pRipple
+          label="Finalizar"
+          (click)="enviarCuestionario()"
+          class="p-button-success"
+        ></button>
+      </div>
+      <!-- Paginador -->
+      <div class="card flex text paginador-abajo">
+        <p-paginator
+          (onPageChange)="onPageChange($event)"
+          [first]="first"
+          [rows]="rows"
+          [totalRecords]="preguntas.length"
+          [rowsPerPageOptions]="[1, 2, 3]"
+        ></p-paginator>
+      </div>
+    </div>
+    <div class="col-4 temporizador">
+      <p-card
+        header="Temporizador"
+        subheader="El cuestionario se enviará automáticamente cuando el temporizador llegue 0:0"
+      >
+        <ng-template pTemplate="content">
+          <div class="card flex justify-content-center">
+            <div class="card">
+              <p-progressBar
+                mode="determinate"
+                [value]="tiempoPorcentaje()"
+                [style]="{ width: '220px', height: '15px' }"
+                
+              ></p-progressBar>
+            </div>
+          </div>
+          <h4 class="text-center">{{ obtnerHoraFormateada() }}</h4>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+<div class="m-5" *ngIf="esEnviado">
+  <p-card header="Resultado De la prueba">
+    <ng-template pTemplate="content"></ng-template>
+    <p>Puntos Conseguidos {{ puntosConseguidos }}</p>
+    <p>Respuesta Correctas {{ respuestasCorrectas }}</p>
+    <div class="text-center">
+      <p-button
+        label="imprimir Resultados"
+        (click)="imprimirResultados()"
+        styleClass="p-button-success mr-5"
+      ></p-button>
+      <p-button
+        label="Inicio"
+        [routerLink]="'/user-dashboard/0'"
+        styleClass="p-button-gray"
+      ></p-button>
+    </div>
+  </p-card>
+</div>

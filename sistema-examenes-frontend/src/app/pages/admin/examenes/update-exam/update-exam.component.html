@@ -1,0 +1,71 @@
+<p-card header="Actualizar Examen">
+  <form (ngSubmit) = "actulaizarDatos()" class="p-fluid p-mx-auto" *ngIf="examenData">
+    <div class="field p-mb-2">
+      <label  class="block">Titulo</label>
+      <input
+        type="text"
+        pInputText
+        required
+        placeholder="Ingrese El Titulo De la categoria"
+        [(ngModel)]="examenData.titulo"
+        name="titulo"
+      />
+      >
+    </div>
+    <div class="field p-mb-2">
+      <label class="block">Descripcion</label>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        placeholder="Ingrese una Descripcion de la Categoria"
+        required
+        [(ngModel)]="examenData.descripcion"
+        name="descripcion"
+      ></textarea>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col">
+        <label  class="block">Puntos Maximos</label>
+        <p-inputNumber
+          inputId="integeronly"
+          placeholder="Ingrese la Cantidad de Puntos Maximos"
+          [(ngModel)]="examenData.puntosMaximos"
+          name="puntosMaximos"
+        ></p-inputNumber>
+      </div>
+
+      <div class="field col">
+        <label  class="block">Numero de Preguntas</label>
+        <p-inputNumber
+          inputId="integeronly"
+          placeholder="Ingrese la Cantidad de numero de Preguntas"
+          [(ngModel)]="examenData.puntosMaximos"
+          name="numeroDePreguntas"
+        ></p-inputNumber>
+
+      </div>
+    </div>
+
+    <div class="formgrid grid">
+      <div class="field col-3">
+        <label>Estado De Publicacion</label><br />
+        <p-inputSwitch name="activo"  [(ngModel)]="examenData.activo" ></p-inputSwitch>
+      </div>
+
+      <div class="field col-9">
+        Categoria
+        <p-dropdown
+          name="categoria"
+          [options]="categoriasData"  
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="text-center">
+      <p-button label="Actualizar" (click)="actulaizarDatos()"  styleClass="p-button-success w-1"></p-button>
+      <p-toast></p-toast>
+    </div>
+  </form>
+</p-card>
+

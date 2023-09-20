@@ -1,0 +1,30 @@
+
+<p-card  class="p-4 content" *ngFor="let examen of examenes">
+    <p-card header="{{examen.titulo}}" subheader="{{examen.descripcion}}">
+        <ng-template pTemplate="header">
+        <img src="assets/img/test.png" class="border-circle"style="max-width: 100px;">
+        </ng-template>
+        <div>
+        <p-button label="Preguntas" [routerLink]="['/admin/ver-preguntas', examen.examenId, examen.titulo]" icon="pi pi-comment" styleClass="p-button-outlined p-button-success m-2" badgeClass="p-badge-danger"></p-button>
+
+        <p-button label="Puntos Maximos" icon="pi pi-star" styleClass="p-button-outlined p-button-success m-2" badge="{{examen.puntosMaximos}}" badgeClass="p-badge-danger"></p-button>
+
+        <p-button label="N° Preguntas"  icon="pi pi-question-circle" styleClass="p-button-outlined p-button-success m-2" badge="{{examen.numeroDePreguntas}}" badgeClass="p-badge-danger"></p-button>
+
+        <p-button label="Actualizar"  [routerLink]="['/admin/examen', examen.examenId]" icon="pi pi-refresh" styleClass="p-button-outlined p-button-success m-2" badgeClass="p-badge-danger"></p-button>
+
+        <p-button label="Intentos" icon="pi pi-history" styleClass="p-button-outlined p-button-success m-2" badgeClass="p-badge-danger"></p-button>
+        
+
+        <div class="text-right mr-5">
+          
+        <p-button icon="pi pi-trash" (click)="eliminarExamen(examen.examenId)" styleClass="p-button-rounded p-button-danger"></p-button>
+    </div>
+    </div>
+    </p-card>
+</p-card>
+<div >    
+    <p-button routerLink="/admin/add-examen" id="boton-fijo"  label="Agregar Cuestionario" styleClass="m-5 boton-fijo" icon="pi pi-plus"></p-button>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog [style]="{width: '40vw'}"></p-confirmDialog>

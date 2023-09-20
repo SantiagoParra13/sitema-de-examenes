@@ -1,0 +1,47 @@
+<div class="container">
+  <p-card header="Actualizando Pregunta  {{pregunta?.examen?.titulo}}">
+    <form  class="p-fluid p-mx-auto" *ngIf="pregunta" (ngSubmit) = "actualiarDatosPregunta()">
+      <div class="field p-mb-2">
+        <strong>Digite nuevos detalles de la pregunta</strong>
+      </div>
+      <div class="field p-mb-2">
+        <label  class="block" >Enunciado de la Pregunta</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          placeholder="Digite el enunciado de la Pregunta"
+          required
+          [(ngModel)]="pregunta.contenido"
+          name="contenido"></textarea>
+      </div>
+      <div class="grid">
+        <div class="field col-6">
+          <label >Digite La Opcion 1</label>
+          <input name="opcion1" [(ngModel)]="pregunta.opcion1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field col-6">
+          <label >Digite La Opcion 2</label>
+          <input name="opcion2" [(ngModel)]="pregunta.opcion2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field col-6">
+          <label >Digite La Opcion 3</label>
+          <input name="opcion3" [(ngModel)]="pregunta.opcion3" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field col-6">
+          <label>Digite La Opcion 4</label>
+          <input name="opcion4" [(ngModel)]="pregunta.opcion4" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+      </div>
+      <p>Elige la respuesta correcta</p>
+      <div class="field col-9">
+        <p-dropdown [(ngModel)]="pregunta.respuesta" name="respuesta" [options]="opcionesRespuesta"></p-dropdown>
+      </div>
+          
+      <div class="grid jalign-items-center justify-content-center">
+        <p-button label="Actualizar" styleClass="p-button-raised" (click)="actualiarDatosPregunta()"></p-button>
+        <p-toast></p-toast>
+      </div>
+    </form>
+  </p-card>
+</div>

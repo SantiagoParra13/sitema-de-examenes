@@ -1,0 +1,30 @@
+<div class="container">
+    <h1><strong>Examenes Disponibles</strong></h1>
+    <div class="grid">
+        <div class="col-6" *ngFor="let examen of examenes; let i = index">
+            <p-card   subheader="{{examen.titulo}}" >
+                <ng-template pTemplate="header">
+                    <div class="header-content">
+                      <img src="assets/img/exame.png" alt="Imagen"  class="header-image w-2">
+                      <strong>{{examen.categoria.titulo}}</strong>
+                    </div>
+                  </ng-template>
+                <ng-template pTemplate="content" >
+                    {{examen.descripcion}}
+                    <div class="mt-2">
+                        <p-button label="Ver" styleClass="p-button-raised p-button-text mr-3 p-button-danger  sm w-auto"></p-button>
+                        <p-button label="Empezar" [routerLink]="'/user-dashboard/instrucciones/' + examen.examenId" styleClass="p-button-raised p-button-text p-button-success  sm w-auto"></p-button>
+                    </div>
+                    <div class="mt-4">
+                        <p-button label="N°Preguntas" badge="{{examen.numeroDePreguntas}}" styleClass="p-button-outlined p-button-sm sm mr-3" ></p-button>
+                        <p-button label="Puntos" badge="{{examen.puntosMaximos}}" styleClass="p-button-outlined p-button-sm"></p-button>
+                    </div>
+                </ng-template>
+        </p-card>
+            
+        </div>
+    </div>
+    <div *ngIf="examenes && examenes.length === 0">
+        <h1>No hay Exámenes en esta Categoría</h1>
+    </div>    
+</div>

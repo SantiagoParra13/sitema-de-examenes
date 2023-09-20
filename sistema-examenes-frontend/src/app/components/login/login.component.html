@@ -1,0 +1,66 @@
+
+<div class="container p-d-flex p-jc-center p-ai-center" >
+    <div class="grid">
+      <div class="col">
+        <div class="flex align-items-center justify-content-center ">
+          <i class="pi pi-user" style="font-size: 6rem"></i>
+        </div>
+      </div>
+    </div>
+  
+    <div class="grid">
+      <div class="col text-3xl text-center">Iniciar Sesion</div>
+    </div>
+  
+    <div class="grid">
+      <div class="col">
+        <div
+          class="flex align-items-center justify-content-center"
+          style="height: 100%"
+          
+        >
+          <form [formGroup]="loginForm" class="p-fluid p-mx-auto ">
+            <div class="field p-mb-2">
+              <label for="username" class="block">Username</label>
+              <input
+                type="text"
+                pInputText
+                placeholder="Ingrese Nombre de Usuario"
+                formControlName="username"
+              />
+              <small
+                class="p-error block"
+                *ngIf="
+                loginForm.get('username')?.invalid && loginForm.get('username')?.dirty
+                "
+                >Es necesario el username</small
+              >
+            </div>
+            <div class="field p-mb-2">
+              <label for="password" class="block">Password</label>
+              <input
+                type="password"
+                pInputText
+                placeholder="Ingrese su Password"
+                formControlName="password"
+              />
+              <small
+                class="p-error block"
+                *ngIf="
+                loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.dirty
+                "
+                >Es necesario el password</small
+              >
+            </div>
+           
+  
+            <div class="grid jalign-items-center justify-content-center">
+              <button type="button" styleClass="p-button-sucess" pButton class="p-button-primary" (click)="login()" label="Iniciar Sesion" ></button>
+              <p-toast></p-toast>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
